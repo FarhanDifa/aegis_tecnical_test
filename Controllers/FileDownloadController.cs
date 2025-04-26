@@ -26,9 +26,15 @@ namespace aegis_technical_tes.Controllers
         {
             if(type.ToLower() == "excel"){
                 using var workbook = new XLWorkbook();
-                var sheet = workbook.Worksheets.Add("Data diri");
-                sheet.Cell(1, 1).Value = "Nama";
-                sheet.Cell(1, 2).Value = "M Farhan";
+                var sheet = workbook.Worksheets.Add("Daftar Nama");
+
+                List<string> names = new List<string> { "Junaedi", "Ali", "Dimas" };
+
+                int row=1;
+                foreach(var item in names){
+                    sheet.Cell(row, 1).Value = @item;
+                    row++;
+                }
 
                 using var stream = new MemoryStream();
                 workbook.SaveAs(stream);
