@@ -1,0 +1,26 @@
+@using aegis_technical_tes.Model
+@model List<Siswa>
+@{
+    ViewData["Title"] = "Siswa";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th><th>Nama</th><th>Umur</th><th>Alamat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Nama</td>
+                <td>@s.Umur</td>
+                <td>@s.Alamat</td>
+            </tr>
+        }
+    </tbody>
+</table>

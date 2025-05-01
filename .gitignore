@@ -1,0 +1,50 @@
+## Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+
+## Ignore build results
+bin/
+obj/
+out/
+
+## Ignore Rider IDE files
+.idea/
+
+## Ignore build artifacts
+*.dll
+*.exe
+*.app
+*.pdb
+
+## Ignore temporary files
+*.log
+*.tmp
+*.bak
+*.cache
+
+## Ignore NuGet
+*.nupkg
+packages/
+project.lock.json
+*.snupkg
+
+## Ignore publish output
+publish/
+wwwroot/lib/
+
+## Ignore secrets
+secrets.json
+appsettings.Development.json
+
+## Ignore test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## Ignore node_modules if using frontend
+node_modules/
+
+## Ignore Puppeteer Chromium
+.local-chromium/
