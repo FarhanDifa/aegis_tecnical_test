@@ -1,22 +1,31 @@
 @using aegis_technical_tes.Model
 @model List<Siswa>
 @{
-    ViewData["Title"] = "Siswa";
+    ViewData["Title"] = "Daftar Siswa";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<table>
+@if (!(ViewBag.IsExportingPdf ?? true))
+{
+    <a href="/FileDownload/Download?type=excel">Unduh Excel</a>
+    <a href="/FileDownload/Download?type=pdf">Unduh PDF</a>
+}
+
+
+
+<table border="1">
     <thead>
         <tr>
-            <th>Id</th><th>Nama</th><th>Umur</th><th>Alamat</th>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Alamat</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var s in Model)
         {
             <tr>
-                <td>@s.Id</td>
                 <td>@s.Nama</td>
                 <td>@s.Umur</td>
                 <td>@s.Alamat</td>

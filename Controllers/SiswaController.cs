@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using aegis_technical_tes.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 
 namespace aegis_technical_tes.Controllers
@@ -12,15 +15,22 @@ namespace aegis_technical_tes.Controllers
     public class SiswaController : Controller
     {
         private readonly ILogger<SiswaController> _logger;
+        private readonly ISiswaRepository _siswaRepository;
 
-        public SiswaController(ILogger<SiswaController> logger)
+
+        public SiswaController(ILogger<SiswaController> logger, ISiswaRepository siswaRepository)
         {
             _logger = logger;
+            _siswaRepository = siswaRepository;
         }
 
         public IActionResult Index()
         {
-            return View("~/Views/Siswa/Index.cshtml");
+            var isExportingPdf = false; 
+            var result = _siswaRepository.GetAll();
+
+            ViewBag.IsExportingPdf = isExportingPdf;
+            return View("~/Views/Siswa/Index.cshtml",result);
         }
 
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
